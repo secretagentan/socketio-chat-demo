@@ -1,6 +1,6 @@
-# Women Who Code LA - Meetup - [2017.03.13]
+# Intro to Socket.io Workshop
 
-## Intro to Socket.io Workshop
+## Women Who Code LA - Meetup - [2017.03.13]
 
 ### chatdemo
 

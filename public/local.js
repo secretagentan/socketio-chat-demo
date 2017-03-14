@@ -6,6 +6,7 @@ var socket = io();  // Note that the SocketIO client-side library was imported o
 var sendButton = document.getElementById("send");
 var nameInput = document.getElementById("nameinput");
 var messageInput = document.getElementById("messageinput");
+nameInput.focus();
 
 // When user clicks "Send" button, run sendMessage function
 sendButton.addEventListener("click", sendMessage);
@@ -14,13 +15,22 @@ function sendMessage(event) {
   console.log('SENDING: name: '+ nameInput.value + ', message: ' + messageInput.value);
 
   // Write your code here to use SocketIO to send data to the server!
-
-
-}
+  var data = {
+    name: nameInput.value,
+    message: messageInput.value
+  };
+  socket.emit('send', data);
+  messageInput.value = "";
+  messageInput.focus();
+};
 
 // Write your code here to use SocketIO to receive data from the server,
 // and be sure to use the displayNewMessage function below to display it on the page!
-
+socket.on('receive', function(data) {
+  console.log('name: ' + data.name);
+  console.log('message: '+ data.message);
+  displayNewMessage(data.name, data.message);
+})
 
 
 // This function handles actually displaying the messages:

@@ -21,6 +21,10 @@ io.on('connection', function(socket){
   console.log('A user connected!');
 
   // Write your SocketIO code here for sending and receiving events!
+  socket.on('send', function(data) {
+    console.log('name: ' + data.name + ', message: ' + data.message);
+    io.sockets.emit('receive', data);
+  })
 
 
 }); // End of SocketIO code
